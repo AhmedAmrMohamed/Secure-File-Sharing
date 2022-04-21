@@ -1,0 +1,5 @@
+
+src/cleanup.sh
+src/tmp.py
+*.pyc
+*.bin
