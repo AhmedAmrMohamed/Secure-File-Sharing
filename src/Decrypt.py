@@ -8,7 +8,7 @@ class Decrypt:
         self.channelsManger = Channels.Manger()
         privateKey = self.channelsManger.loadPrivateKey(secretCode)
         sessionKey = self.DecryptSessionKey(privateKey)
-        self.message = self.DecryptMessage(sessionKey)
+        self.message = self.DecryptMessage(sessionKey).encode('ascii')
     
     def DecryptSessionKey(self, privateKey):
         enc_sessionKey = self.channelsManger.loadEncyptedSessionKey()

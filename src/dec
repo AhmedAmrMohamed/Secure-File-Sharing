@@ -1,0 +1,18 @@
+from PublicKeyEstablishment import PublicKeyEstablishment
+from Encrypt import Encrypt
+from Decrypt import Decrypt
+from FileLoader import FileLoader
+
+# sender = PublicKeyEstablishment()
+# PublicKeyEstablishment(True)
+# PublicKeyEstablishment(False, "secret code")
+
+
+fl = FileLoader("tmp.py")
+# reciver.genReciverkeys(b'secret code')
+# sender.genSenderSessionKey()
+# sender = Encrypt(fl.readFile())
+
+y = Decrypt(b'secret code')
+fl.writeFile(y.message)
+# print(y.message)

@@ -1,4 +1,5 @@
 from Crypto.PublicKey import RSA
+import os
 
 class Channels:
         public = 'public'
@@ -12,6 +13,7 @@ class Manger:
         self.sessionKey = self.buildFileName(Channels.sender, 'sessionKey')
         self.encryptedSessionKeyPath = self.buildFileName(Channels.public, 'EncryptedSessionKey')
         self.cypherAES = self.buildFileName(Channels.public, 'AESCypher')
+        self.reciverACK  = self.buildFileName(Channels.public, 'reciverACK')
 
     def buildFileName(self, channel, filename):
         return f'../{channel}/{filename}.bin'
@@ -62,10 +64,17 @@ class Manger:
         file.close()
         return nonce, tag, text
     
+    def checkReciverACK(self):
+        return os.path.isfile(self.reciverACK)
+    
+    def removeReciverACK(self):
+        os.remove(self.reciverACK)
+
+    def genReciverACK(self):
+        open(self.reciverACK, 'wb').close() #touch file
     
 
 
 
 
     
-x = Manger()
