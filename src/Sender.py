@@ -1,13 +1,12 @@
-from PublicKeyEstablishment import PublicKeyEstablishment
-from Encrypt import Encrypt
-from FileLoader import FileLoader 
-import Channels  
+from src.PublicKeyEstablishment import PublicKeyEstablishment
+from src.Encrypt import Encrypt
+from src.FileLoader import FileLoader 
+import src.Channels  
 import time
 
 class Sender:
     def __init__(self):
-        self.channelsManger = Channels.Manger()
-        # self.keyestablished = self.establishKey()
+        self.channelsManger = src.Channels.Manger()
 
     def EstablishKey(self):
         reciverAck = self.waitForReciverACK()
@@ -29,7 +28,8 @@ class Sender:
             time.sleep(1)
         found =  timeout > 0
         msg = f"Reciver {'found' if found else 'timeout'}."
-        self.channelsManger.removeReciverACK()
+        if found:
+            self.channelsManger.removeReciverACK()
         print(msg)
         return found
     

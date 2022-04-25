@@ -5,6 +5,7 @@ class FileLoader:
     def readFile(self):
         r = open(self.filename, 'rb')
         data = r.read()
+        print(data.__class__)
         r.close()
         return data
     

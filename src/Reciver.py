@@ -1,25 +1,24 @@
-from PublicKeyEstablishment import PublicKeyEstablishment
-from Decrypt import Decrypt
-from FileLoader import FileLoader 
-import Channels  
+from src.PublicKeyEstablishment import PublicKeyEstablishment
+from src.Decrypt import Decrypt
+from src.FileLoader import FileLoader 
+import src.Channels  
 import time
 
 class Reciver:
     def __init__(self, secretCode):
         self.secretCode = secretCode.encode('ascii')
-        self.channelsManger = Channels.Manger()
-        # self.EstablishPublicKey()
+        self.channelsManger = src.Channels.Manger()
     
     def writeFile(self, message):
-        fl = FileLoader('../reciver/dec.py') ##TODO: you know what...
+        fl = FileLoader('OPENME') ##TODO: you know what...
         fl.writeFile(message)
 
-    def EstablishPublicKey(self):
+    def EstablishKey(self):
         PublicKeyEstablishment(False, self.secretCode)
         self.channelsManger.genReciverACK()
     
-    def Decrypt(self, secretCode):
-        msg = Decrypt(secretCode).message
+    def Decrypt(self):
+        msg = Decrypt(self.secretCode).message
         self.writeFile(msg)
 
 

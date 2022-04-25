@@ -16,7 +16,7 @@ class Manger:
         self.reciverACK  = self.buildFileName(Channels.public, 'reciverACK')
 
     def buildFileName(self, channel, filename):
-        return f'../{channel}/{filename}.bin'
+        return f'{channel}/{filename}.bin'
 
     def writeBytes(self, filepath, data):
         f=open(filepath, 'wb')

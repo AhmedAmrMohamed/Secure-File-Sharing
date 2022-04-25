@@ -1,14 +1,14 @@
 from Crypto.PublicKey import RSA
 from Crypto.Random import get_random_bytes
 from Crypto.Cipher import AES, PKCS1_OAEP
-import Channels
+import src.Channels
 
 class Decrypt:
     def __init__(self, secretCode):
-        self.channelsManger = Channels.Manger()
+        self.channelsManger = src.Channels.Manger()
         privateKey = self.channelsManger.loadPrivateKey(secretCode)
         sessionKey = self.DecryptSessionKey(privateKey)
-        self.message = self.DecryptMessage(sessionKey).encode('ascii')
+        self.message = self.DecryptMessage(sessionKey)
     
     def DecryptSessionKey(self, privateKey):
         enc_sessionKey = self.channelsManger.loadEncyptedSessionKey()
@@ -20,4 +20,4 @@ class Decrypt:
         nonce, tag, text = self.channelsManger.loadCypherAES()
         cipher_aes = AES.new(sessionKey, AES.MODE_EAX, nonce)
         message = cipher_aes.decrypt_and_verify(text, tag)
-        return(message.decode("utf-8"))
+        return(message)

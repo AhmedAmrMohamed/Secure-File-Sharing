@@ -1,11 +1,11 @@
 from Crypto.PublicKey import RSA
 from Crypto.Random import get_random_bytes
 from Crypto.Cipher import AES, PKCS1_OAEP
-import Channels
+import src.Channels
 
 class Encrypt():
     def __init__(self, message):
-        self.channelsManger = Channels.Manger()
+        self.channelsManger = src.Channels.Manger()
         publicKey, sessionKey = self.loadKeys()
         self.Encrypt(publicKey, sessionKey, message)
         
