@@ -4,6 +4,8 @@ from Crypto.Cipher import AES, PKCS1_OAEP
 import Channels
 
 class PublicKeyEstablishment:
+    # pke ( true) : sneder
+    # pke (fals, string): reciver
     def __init__(self, sender = True, secretCode = None):
         self.channelsManger = Channels.Manger()
         if sender:

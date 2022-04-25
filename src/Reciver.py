@@ -8,7 +8,7 @@ class Reciver:
     def __init__(self, secretCode):
         self.secretCode = secretCode.encode('ascii')
         self.channelsManger = Channels.Manger()
-        self.EstablishPublicKey()
+        # self.EstablishPublicKey()
     
     def writeFile(self, message):
         fl = FileLoader('../reciver/dec.py') ##TODO: you know what...

@@ -7,9 +7,9 @@ import time
 class Sender:
     def __init__(self):
         self.channelsManger = Channels.Manger()
-        self.keyestablished = self.establishKey()
+        # self.keyestablished = self.establishKey()
 
-    def establishKey(self):
+    def EstablishKey(self):
         reciverAck = self.waitForReciverACK()
         if reciverAck == True :
             PublicKeyEstablishment(sender=True)
